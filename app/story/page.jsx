@@ -1,8 +1,9 @@
 "use client";
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
-export default function StoryPage() {
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState, Suspense } from 'react';
+
+function StoryPageContent() {
   const searchParams = useSearchParams();
   const [storyContent, setStoryContent] = useState('');
   const [loading, setLoading] = useState(true); // To show loading state
@@ -17,7 +18,7 @@ export default function StoryPage() {
       setLoading(false);
       return;
     }
-  
+
     // Send a POST request to the backend
     async function fetchStory() {
       setLoading(true);
@@ -32,7 +33,7 @@ export default function StoryPage() {
             type: type,
           }),
         });
-        
+
         const data = await response.text(); // Assuming the backend returns text content
         setStoryContent(data);
       } catch (error) {
@@ -48,7 +49,7 @@ export default function StoryPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 p-6">
-            <title>Best Personalized Stories for Kids | StoryNest Kids</title>
+      <title>Best Personalized Stories for Kids | StoryNest Kids</title>
 
       <div className="w-full max-w-md mx-auto mb-8">
         <h1 className="text-4xl text-center font-extrabold text-gray-800 mb-6">
@@ -87,5 +88,13 @@ export default function StoryPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function StoryPage() {
+  return (
+    <Suspense fallback={<div>Loading search parameters...</div>}>
+      <StoryPageContent />
+    </Suspense>
   );
 }
