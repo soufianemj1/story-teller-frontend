@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Story teller",
-  description: "THis website eill generate personalized stories for you and your kids",
+  description: "Personalized stories for kids, perfect for bedtime and family fun. Create custom, educational adventures that inspire creativity!",
 };
 
 
