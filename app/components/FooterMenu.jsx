@@ -37,6 +37,14 @@ const FooterMenu = () => {
               Terms of Service
             </Link>
           </li>
+          <li>
+            <Link 
+              className="text-gray-300 hover:text-gray-200 transition-colors duration-200 text-base md:text-lg" 
+              href="/legal/about-us"
+            >
+              About Us
+            </Link>
+          </li>
         </ul>
       </nav>
     </footer>
