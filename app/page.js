@@ -6,6 +6,24 @@ import { useEffect } from "react";
 import Head from "next/head";
 
 export default function Home() {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://www.storynestkids.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.storynestkids.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "StoryNest Kids",
+    "url": "https://www.storynestkids.com",
+    "logo": "https://www.storynestkids.com/images/kid-story.png",
+  };
   const router = useRouter();
 
   useEffect(() => {
@@ -26,6 +44,17 @@ export default function Home() {
         <meta property="og:description" content="Create magical personalized bedtime stories for your children at StoryNest. Choose names, themes, and unique adventures to make every story special!" />
         <meta property="og:image" content="/images/kid-story.png" />
         <meta property="og:url" content="https://www.storynestkids.com/" />
+        <Head>
+        {/* Other Meta Tags */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </Head>
       </Head>
 
       <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-stretch gap-10 p-6">
