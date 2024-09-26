@@ -42,7 +42,7 @@ export default function Home() {
     </p>
     <div className="flex justify-center mb-6">
       <Image
-        src="/images/kid-story.png"
+        src="/images/home.png"
         alt="Magical personalized stories for kids"
         width={500}
         height={300}
